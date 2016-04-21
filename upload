@@ -1,0 +1,22 @@
+upload
+file 
+file_id
+user_id
+uploads - user id & file id 
+fs grid  - file return file_id
+insert uploads user_id file_id 
+
+post
+post id post content time user id 
+
+comment id comment user id post id and time 
+
+album id album title user id 
+
+photo id photo title photo location photo time album id user id 
+
+conversation id user id 1 user id 2 last
+
+message id message conversation id timestamp status 1
+
+ 

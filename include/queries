@@ -1,0 +1,1 @@
+db.users.insert({"PRN":"2014BCS218","FName":"Harshal","LName":"Khairnar","DOB":"04-06-1995","Gender":"Male","Email":"hskhairnar@live.com","Contact":"9403575261","City":"Sangli","Hometown":"Dhule","Department_ID":"1","Year":"3","Batch_From":"2014","Batch_To":"2017","Password":"20x8xuiNBzDoQ"})

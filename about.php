@@ -4,6 +4,8 @@ if(!$wnm->CheckLogin())
 {
 	$wnm->RedirectToURL("testlogin.php");
 }
+
+
 ?>
 <div class="cover overlay cover-image-full height-300-lg">
 

@@ -5,6 +5,8 @@ if(!$wnm->CheckLogin())
   $wnm->RedirectToURL("login.php");
 }
 
+echo $wnm->Username();
+
 ?>
 
 
@@ -75,7 +77,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         <div class="sidebar-block">
           <div class="profile">
             <img src="images/people/110/guy-6.jpg" alt="people" class="img-circle" />
-            <h4><?php echo $wnm->UserFullName(); ?></h4>
+            <h4><?php echo $wnm->UserPRN(); ?></h4>
           </div>
         </div>
         <div class="category">About</div>
@@ -362,6 +364,43 @@ function editAbout() {
   xmlhttp.open("GET","editAbout.php",true);
   xmlhttp.send();
 }
+
+function saveAbout() {
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } 
+  else 
+  {  // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("responseDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+    
+    
+    var dob=document.getElementById('dob').value;
+var gender=document.getElementById('gender').value;
+var city=document.getElementById('city').value;
+var hometown=document.getElementById('hometown').value;
+var dept=document.getElementById('dept').value;
+var batchfrom=document.getElementById('batchfrom').value;
+var batchto=document.getElementById('batch').value;
+var email=document.getElementById('email').value;
+var contact=document.getElementById('contact').value;
+var year=document.getElementById('year').value;
+  var query="?dob="+dob;
+  query+="&gender="+gender+"&city="+city+"&hometown="+hometown+"&dept="+dept+"&batchfrom="+batchfrom+"&batchto="+batchto+"&email="+email+"&contact="+contact+"&year="+year;
+
+  //ajaxRequest.open("GET","update_profile.php"+query,true);
+  //ajaxRequest.send(null);
+  xmlhttp.open("GET","update_profile.php"+query,true);
+  xmlhttp.send();
+
+ }
+
 
 </script>
 </body>

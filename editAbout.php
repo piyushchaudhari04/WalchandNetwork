@@ -6,7 +6,7 @@ if(!$wnm->CheckLogin())
 }
 ?>
 <form method="post" actiom="$_REQUEST['self']">
-<div class="panel-heading panel-heading-gray">
+<div id="profileDiv" class="panel-heading panel-heading-gray">
                     <a href="#cancel" onclick="getAbout()" class="btn btn-white btn-xs pull-right"><i class="fa fa-times"></i></a>
                     <i class="fa fa-fw fa-info-circle"></i> About
                   </div>
@@ -57,11 +57,18 @@ if(!$wnm->CheckLogin())
 
                       <li class="padding-v-5">
                         <div class="row">
-                          <div class="col-sm-4"><span class="text-muted">Batch </span></div>
-                          <div class="col-sm-8"><input type="text" value="<?php echo $wnm->UserBatchFrom()." - ".$wnm->UserBatchTo(); ?>"  name="batch" id="batch" class="form-control"/></div>
+                          <div class="col-sm-4"><span class="text-muted">Batch From </span></div>
+                          <div class="col-sm-8"><input type="text" value="<?php echo $wnm->UserBatchFrom(); ?>"  name="batch" id="batchfrom" class="form-control"/></div>
                         </div>
                       </li>
-
+                      
+                      <li class="padding-v-5">
+                        <div class="row">
+                          <div class="col-sm-4"><span class="text-muted">Batch To </span></div>
+                          <div class="col-sm-8"><input type="text" value="<?php echo $wnm->UserBatchTo(); ?>"  name="batchto" id="batch" class="form-control"/></div>
+                        </div>
+                      </li>
+                      
                       <li class="padding-v-5">
                         <div class="row">
                           <div class="col-sm-4"><span class="text-muted">Email</span></div>
@@ -82,3 +89,4 @@ if(!$wnm->CheckLogin())
                     </div>
                     </div>
 </form>
+

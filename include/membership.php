@@ -67,13 +67,14 @@ class Membership
         return true;
     }
 
+
      function CheckLoginInDB($username,$password)
     {         
-       	
+
 		$user_encry_pass=crypt(strval($password), $this->salt);
-  		$query = array("PRN"=>$username);
+  		$query = array("_id"=>$username);
   		$result = $this->db->users->findOne($query);
-  		$pass=$result["Password"];
+  		$pass=$result["password"];
         
         if(strcmp($user_encry_pass,$pass))
         {
@@ -82,20 +83,21 @@ class Membership
         }
 
         $_SESSION['username'] = $username;
-        $_SESSION['prn'] = $result["PRN"];
-        $_SESSION['fullname']=$result["FName"]." ".$result["LName"]; 
-        $_SESSION['fname'] = $result["FName"];
-        $_SESSION['lname'] = $result["LName"];
-        $_SESSION['dob'] = $result["DOB"];
-        $_SESSION['gender'] = $result["Gender"];
-        $_SESSION['email'] = $result["Email"];
-        $_SESSION['contact'] = $result["Contact"];
-        $_SESSION['city'] = $result["City"];
-        $_SESSION['hometown'] = $result["Hometown"];
-        $_SESSION['dept'] = $result["Department_ID"];
-        $_SESSION['year'] = $result["Year"];
-        $_SESSION['batch_from'] = $result["Batch_From"];
-        $_SESSION['batch_to'] = $result["Batch_To"];
+        $_SESSION['password'] = $pass;
+        $_SESSION['prn'] = $result["_id"];
+       // $_SESSION['fullname']=$result["FName"]." ".$result["LName"]; 
+        //$_SESSION['fname'] = $result["FName"];
+        //$_SESSION['lname'] = $result["LName"];
+        $_SESSION['dob'] = $result["dob"];
+        $_SESSION['gender'] = $result["gender"];
+        $_SESSION['email'] = $result["email"];
+        $_SESSION['contact'] = $result["contact"];
+        $_SESSION['city'] = $result["city"];
+        $_SESSION['hometown'] = $result["hometown"];
+        $_SESSION['dept'] = $result["department"];
+        $_SESSION['year'] = $result["year"];
+        $_SESSION['batch_from'] = $result["batchfrom"];
+        $_SESSION['batch_to'] = $result["batchto"];
 
         //here we will add the user values to the session
  	/*
@@ -104,12 +106,41 @@ class Membership
      */   
         return true;
     }
+    function UpdateSESSION($prn)
+    {
+        session_destroy();
+        session_start();
+        $query = array("_id"=>$prn);
+        $result = $this->db->users->findOne($query);
+        
+        $_SESSION['username'] = $prn;
+         $_SESSION['prn'] = $result["_id"];
+       // $_SESSION['fullname']=$result["FName"]." ".$result["LName"]; 
+        //$_SESSION['fname'] = $result["FName"];
+        //$_SESSION['lname'] = $result["LName"];
+        $_SESSION['dob'] = $result["dob"];
+        $_SESSION['gender'] = $result["gender"];
+        $_SESSION['email'] = $result["email"];
+        $_SESSION['contact'] = $result["contact"];
+        $_SESSION['city'] = $result["city"];
+        $_SESSION['hometown'] = $result["hometown"];
+        $_SESSION['dept'] = $result["department"];
+        $_SESSION['year'] = $result["year"];
+        $_SESSION['batch_from'] = $result["batchfrom"];
+        $_SESSION['batch_to'] = $result["batchto"];
+
+    }
+
 
     //the following function will help us to retrieve user information from the session variables
 
     function Username()
     {
         return isset($_SESSION['username'])?$_SESSION['username']:'';
+    }
+    function Password()
+    {
+        return isset($_SESSION['password'])?$_SESSION['password']:'';
     }
     function UserPRN()
     {

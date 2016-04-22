@@ -10,7 +10,18 @@
 
 
 	$wnm->db->users->update(array("_id"=>$username),$newdata);
-	$wnm->UpdateSESSION($username);
+	//$wnm->UpdateSESSION($username);
+		$_SESSION['dob'] = $newdata["dob"];
+        $_SESSION['gender'] = $newdata["gender"];
+        $_SESSION['email'] = $newdata["email"];
+        $_SESSION['contact'] = $newdata["contact"];
+        $_SESSION['city'] = $newdata["city"];
+        $_SESSION['hometown'] = $newdata["hometown"];
+        $_SESSION['dept'] = $newdata["department"];
+        $_SESSION['year'] = $newdata["year"];
+        $_SESSION['batch_from'] = $newdata["batchfrom"];
+        $_SESSION['batch_to'] = $newdata["batchto"];
+
 	$wnm->RedirectToURL("about.php");
 
 ?>

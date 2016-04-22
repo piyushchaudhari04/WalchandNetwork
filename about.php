@@ -203,6 +203,140 @@ if(!$wnm->CheckLogin())
 
             <div class="panel panel-default">
               <div class="panel-heading panel-heading-gray">
+                <i class="fa fa-w icon-ship-wheel"></i> My Timeline
+              </div>
+              <div class="panel-body">
+              <?php 
+              $query = array("PRN"=>$wnm->Username());
+              $result = $wnm->db->posts->find($query);
+              foreach ($result as $post =>$row)
+              {
+                ?>
+
+                <div class="col-xs-12 col-md-6 col-lg-4 item">
+                <div class="timeline-block">
+                  <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                      <div class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img src="images/people/50/woman-6.jpg" class="media-object">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <a href="#" class="pull-right text-muted"><i class="icon-reply-all-fill fa fa-2x "></i></a>
+
+                          <a href="#"><?php echo $wnm->UserFullName(); ?></a>
+
+
+                          <span><?php $date = $row['post_date']; echo date('Y-M-d h:i',$date->sec); ?></span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="panel-body">
+                      <p><?php if($row['status_flag']>0){echo $row['Status'];} ?></p>
+                      <?php if($row['image_flag']>0){ ?>
+                      <div class="timeline-added-images">
+                        <img src="images/social/100/1.jpg" width="80" alt="photo" />
+                        <img src="images/social/100/2.jpg" width="80" alt="photo" />
+                        <img src="images/social/100/3.jpg" width="80" alt="photo" />
+                      </div>
+                      <?php } ?>
+                    </div>
+                    <div class="view-all-comments">
+                      <a href="#">
+                        <i class="fa fa-comments-o"></i> View all
+                      </a>
+                      <span>10 comments</span>
+
+                    </div>
+                    <ul class="comments">
+                      <li class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img src="images/people/50/guy-5.jpg" class="media-object">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <div class="pull-right dropdown" data-show-hover="li">
+                            <a href="#" data-toggle="dropdown" class="toggle-button">
+                              <i class="fa fa-pencil"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Edit</a></li>
+                              <li><a href="#">Delete</a></li>
+                            </ul>
+                          </div>
+                          <a href="#" class="comment-author pull-left">Bill D.</a>
+                          <span>Hi Mary, Nice Party</span>
+                          <div class="comment-date">21st September</div>
+                        </div>
+                      </li>
+                      <li class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img src="images/people/50/woman-5.jpg" class="media-object">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <div class="pull-right dropdown" data-show-hover="li">
+                            <a href="#" data-toggle="dropdown" class="toggle-button">
+                              <i class="fa fa-pencil"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Edit</a></li>
+                              <li><a href="#">Delete</a></li>
+                            </ul>
+                          </div>
+                          <a href="#" class="comment-author pull-left">Mary</a>
+                          <span>Thanks Bill</span>
+                          <div class="comment-date">2 days</div>
+                        </div>
+                      </li>
+                      <li class="media">
+                        <div class="media-left">
+                          <a href="#">
+                            <img src="images/people/50/guy-5.jpg" class="media-object">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <div class="pull-right dropdown" data-show-hover="li">
+                            <a href="#" data-toggle="dropdown" class="toggle-button">
+                              <i class="fa fa-pencil"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Edit</a></li>
+                              <li><a href="#">Delete</a></li>
+                            </ul>
+                          </div>
+                          <a href="#" class="comment-author pull-left">Bill D.</a>
+                          <span>What time did it finish?</span>
+                          <div class="comment-date">14 min</div>
+                        </div>
+                      </li>
+                      <li class="comment-form">
+                        <div class="input-group">
+
+                          <span class="input-group-btn">
+                   <a href="#" class="btn btn-default"><i class="fa fa-photo"></i></a>
+                    </span>
+
+                          <input type="text" class="form-control" />
+
+                        </div>
+                      </li>
+                    </ul>
+                      </div>
+                    </div>
+                </div>
+              <?php } ?>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading panel-heading-gray">
                 <i class="fa fa-bookmark"></i> Bookmarks
               </div>
               <div class="panel-body">

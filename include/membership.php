@@ -85,9 +85,9 @@ class Membership
         $_SESSION['username'] = $username;
         $_SESSION['password'] = $pass;
         $_SESSION['prn'] = $result["_id"];
-       // $_SESSION['fullname']=$result["FName"]." ".$result["LName"]; 
-        //$_SESSION['fname'] = $result["FName"];
-        //$_SESSION['lname'] = $result["LName"];
+        $_SESSION['fullname']=$result["f_name"]." ".$result["l_name"]; 
+        $_SESSION['fname'] = $result["f_name"];
+        $_SESSION['lname'] = $result["l_name"];
         $_SESSION['dob'] = $result["dob"];
         $_SESSION['gender'] = $result["gender"];
         $_SESSION['email'] = $result["email"];
@@ -106,30 +106,7 @@ class Membership
      */   
         return true;
     }
-    function UpdateSESSION($prn)
-    {
-        session_destroy();
-        session_start();
-        $query = array("_id"=>$prn);
-        $result = $this->db->users->findOne($query);
-        
-        $_SESSION['username'] = $prn;
-         $_SESSION['prn'] = $result["_id"];
-       // $_SESSION['fullname']=$result["FName"]." ".$result["LName"]; 
-        //$_SESSION['fname'] = $result["FName"];
-        //$_SESSION['lname'] = $result["LName"];
-        $_SESSION['dob'] = $result["dob"];
-        $_SESSION['gender'] = $result["gender"];
-        $_SESSION['email'] = $result["email"];
-        $_SESSION['contact'] = $result["contact"];
-        $_SESSION['city'] = $result["city"];
-        $_SESSION['hometown'] = $result["hometown"];
-        $_SESSION['dept'] = $result["department"];
-        $_SESSION['year'] = $result["year"];
-        $_SESSION['batch_from'] = $result["batchfrom"];
-        $_SESSION['batch_to'] = $result["batchto"];
 
-    }
 
 
     //the following function will help us to retrieve user information from the session variables
